@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Simulador de AFND</title>
+  <link rel="stylesheet" href="css/estilo.css">
+</head>
+<body>
+  <header class="topo">
+    <h1>Simulador de AFND e AFND-ε</h1>
+    <p>Execução passo a passo</p>
+  </header>
+
+  <noscript>
+    <p class="aviso-noscript">Esta página precisa de JavaScript para executar a simulação.</p>
+  </noscript>
+
+  <main class="layout">
+    <div class="coluna-controle">
+
+      <!-- Autômato carregado. O editor (João Pedro) entrega o autômato com
+           usarAutomato(automato); os exemplos servem para testar a tela. -->
+      <section class="cartao" aria-labelledby="titulo-automato">
+        <h2 id="titulo-automato">Autômato</h2>
+        <label class="rotulo" for="exemplo">Exemplo</label>
+        <select id="exemplo"></select>
+
+        <dl class="definicao" id="definicao"></dl>
+
+        <div class="tabela-rolagem">
+          <table class="tabela-delta" id="tabela-delta">
+            <caption>Função de transição δ (→ inicial, * final)</caption>
+            <thead></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="cartao" aria-labelledby="titulo-sentenca">
+        <h2 id="titulo-sentenca">Sentença</h2>
+        <form class="form-sentenca" id="form-sentenca">
+          <label class="visualmente-oculto" for="sentenca">Sentença de entrada</label>
+          <input id="sentenca" type="text" autocomplete="off" spellcheck="false"
+                 autocapitalize="off" placeholder="ex.: aabb (vazio = ε)">
+          <button type="submit" class="botao primario">Iniciar</button>
+        </form>
+        <p class="erro" id="erro" role="alert" hidden></p>
+
+        <div class="botoes">
+          <button type="button" class="botao primario" id="btn-passo" disabled>Próximo passo</button>
+          <button type="button" class="botao" id="btn-tudo" disabled>Executar tudo</button>
+          <button type="button" class="botao" id="btn-reiniciar" disabled>Reiniciar</button>
+        </div>
+      </section>
+
+      <section class="cartao" aria-labelledby="titulo-fita">
+        <div class="cabecalho-cartao">
+          <h2 id="titulo-fita">Fita</h2>
+          <span class="contador" id="contador"></span>
+        </div>
+        <div class="fita" id="fita">
+          <span class="fita-vazia">Nenhuma simulação em andamento.</span>
+        </div>
+        <div class="resultado" id="resultado" aria-live="polite" hidden></div>
+      </section>
+
+      <section class="cartao" aria-labelledby="titulo-estados">
+        <h2 id="titulo-estados">Estados possíveis</h2>
+        <div class="estados" id="estados"><span class="texto-suave">—</span></div>
+      </section>
+
+      <section class="cartao" aria-labelledby="titulo-ramos">
+        <h2 id="titulo-ramos">Ramos atuais</h2>
+        <ul class="ramos" id="ramos"><li class="texto-suave">—</li></ul>
+      </section>
+    </div>
+
+    <section class="cartao cartao-arvore" aria-labelledby="titulo-arvore">
+      <div class="cabecalho-cartao">
+        <h2 id="titulo-arvore">Árvore de execução</h2>
+        <button type="button" class="botao pequeno" id="btn-centralizar" disabled>Centralizar</button>
+      </div>
+
+      <div class="arvore-area">
+        <div class="arvore" id="arvore"></div>
+        <p class="arvore-aviso" id="arvore-aviso">Digite uma sentença e clique em Iniciar.</p>
+      </div>
+
+      <p class="detalhe-no" id="detalhe-no">Toque em um nó para ver o caminho até ele.</p>
+
+      <ul class="legenda">
+        <li><span class="bolinha ativo"></span>ativo</li>
+        <li><span class="bolinha expandido"></span>expandido</li>
+        <li><span class="bolinha morto"></span>morto</li>
+        <li><span class="bolinha ciclo"></span>ciclo de ε</li>
+        <li><span class="bolinha aceito"></span>aceito</li>
+        <li><span class="bolinha rejeitado"></span>rejeitado</li>
+        <li><span class="bolinha final"></span>estado final</li>
+        <li><span class="traco-epsilon"></span>transição ε</li>
+      </ul>
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/cytoscape@3.30.2/dist/cytoscape.min.js"></script>
+  <script src="js/motor.js"></script>
+  <script src="js/tela.js"></script>
+</body>
+</html>
