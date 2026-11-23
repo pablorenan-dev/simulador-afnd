@@ -19,6 +19,54 @@
   <main class="layout">
     <div class="coluna-controle">
 
+      <!-- Especificação do autômato (João Pedro): js/especificacao.js -->
+      <section class="cartao" aria-labelledby="titulo-especificacao">
+        <h2 id="titulo-especificacao">Especificação</h2>
+        <form class="especificacao" id="form-especificacao" novalidate>
+          <div>
+            <label class="rotulo" for="esp-alfabeto">Alfabeto (Σ)</label>
+            <input id="esp-alfabeto" type="text" autocomplete="off" spellcheck="false"
+                   autocapitalize="off" placeholder="ex.: a b">
+          </div>
+          <div>
+            <label class="rotulo" for="esp-estados">Estados (Q)</label>
+            <input id="esp-estados" type="text" autocomplete="off" spellcheck="false"
+                   autocapitalize="off" placeholder="ex.: q0 q1 q2">
+          </div>
+          <p class="esp-dica">Separe com espaço ou vírgula. Cada símbolo tem 1 caractere.</p>
+          <div>
+            <button type="button" class="botao pequeno" id="esp-montar">Montar tabela</button>
+          </div>
+
+          <div class="especificacao" id="esp-detalhes" hidden>
+            <div>
+              <label class="rotulo" for="esp-inicial">Estado inicial</label>
+              <select id="esp-inicial"></select>
+            </div>
+            <fieldset class="esp-grupo">
+              <legend class="rotulo">Estados finais (F)</legend>
+              <div class="esp-finais" id="esp-finais"></div>
+            </fieldset>
+            <div class="tabela-rolagem">
+              <table class="tabela-delta esp-tabela" id="esp-tabela">
+                <caption>δ: destinos separados por vírgula (ex.: q0, q1). Vazio = sem transição.</caption>
+                <thead></thead>
+                <tbody></tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="botoes">
+            <button type="submit" class="botao primario" id="esp-aplicar">Aplicar ao simulador</button>
+            <button type="button" class="botao" id="esp-salvar">Salvar JSON</button>
+            <button type="button" class="botao" id="esp-abrir">Abrir JSON</button>
+            <input type="file" id="esp-arquivo" accept=".json,application/json" hidden>
+          </div>
+          <div class="erro" id="esp-erros" role="alert" hidden></div>
+          <p class="esp-status" id="esp-status" role="status" hidden></p>
+        </form>
+      </section>
+
       <!-- Autômato carregado. O editor (João Pedro) entrega o autômato com
            usarAutomato(automato); os exemplos servem para testar a tela. -->
       <section class="cartao" aria-labelledby="titulo-automato">
@@ -105,5 +153,6 @@
   <script src="https://cdn.jsdelivr.net/npm/cytoscape@3.30.2/dist/cytoscape.min.js"></script>
   <script src="js/motor.js"></script>
   <script src="js/tela.js"></script>
+  <script src="js/especificacao.js"></script>
 </body>
 </html>

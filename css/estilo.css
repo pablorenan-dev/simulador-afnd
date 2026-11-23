@@ -584,3 +584,86 @@ input[type="text"]:focus-visible,
     min-height: 320px;
   }
 }
+
+/* ---------------------------------------------------------------------
+   Especificação do autômato (js/especificacao.js)
+   --------------------------------------------------------------------- */
+
+.especificacao {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.especificacao .botoes {
+  margin-top: 0;
+}
+
+.esp-dica {
+  margin: -4px 0 0;
+  font-size: 0.8rem;
+  color: var(--texto-suave);
+}
+
+.esp-grupo {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  min-width: 0;
+}
+
+.esp-finais {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 12px;
+  font-family: var(--fonte-mono);
+  font-size: 0.9rem;
+}
+
+.esp-final {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+}
+
+.esp-tabela td {
+  padding: 2px;
+}
+
+/* A coluna com o nome do estado fica parada ao rolar a tabela para o
+   lado (alfabetos grandes, como a-z). */
+.esp-tabela tbody th,
+.esp-tabela thead th:first-child {
+  position: sticky;
+  left: 0;
+  z-index: 1;
+  background: var(--superficie);
+}
+
+.esp-tabela thead th:first-child {
+  background: var(--fundo);
+}
+
+.esp-tabela input[type="text"] {
+  min-width: 5.5em;
+  padding: 3px 6px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  text-align: center;
+}
+
+.erro ul {
+  margin: 4px 0 0;
+  padding-left: 18px;
+}
+
+.esp-status {
+  margin: 0;
+  padding: 8px 10px;
+  border-radius: 8px;
+  background: var(--destaque-suave);
+  color: var(--sit-aceito);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
